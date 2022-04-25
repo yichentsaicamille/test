@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滑鼠右鍵選單</title>
+    <style>
+      body {
+        height: 100vh;
+      }
+      .console {
+        padding-left: 10px;
+      }
+      .console:hover {
+        background-color: rgba(179, 179, 179, 0.548);
+        border-radius: 2px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="menu">
+      <p class="console" id="console"></p>
+    </div>
+
+    <script>
+      document.oncontextmenu = function () {
+        return false;
+      };
+      let res = document.getElementById("menu");
+      let console = document.getElementById("console");
+      document.body.onmouseup = function (e) {
+        if (e.button === 2) {
+          res.style.top = e.offsetY + "px";
+          res.style.left = e.offsetX + "px";
+          res.style.display = "block";
+          console.innerHTML = "console";
+          res.style.width = "100px";
+          res.style.height = "200px";
+          res.style.background = "#eee";
+          res.style.position = "absolute";
+          res.style.borderRadius = "10px";
+        } else {
+          res.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
